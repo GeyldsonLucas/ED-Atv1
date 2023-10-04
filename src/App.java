@@ -78,6 +78,12 @@ public class App {
         String busca = inputString();
         for(int i = 0 ; i < tamanhoArrays; i++){
 
+          if(nomes[i] == busca) {
+          // Mostra o nome e idade do aluno
+            print( "Aluno: " + busca + "idade: " + String.parseString(idades[i]);
+
+}
+
         }
     }
 
