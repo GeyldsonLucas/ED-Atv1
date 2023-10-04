@@ -80,14 +80,19 @@ public class App {
     }
 
     public void mediana(){
-
+       
     }
     public void moda(){
 
     }
     public void desvioPadrao(){
-
+        double media = media();
+        for(int i; i<tamanhoArrays; i++){
+         double desvio = media - idades[i]
+         print( "O desvido padrão de " + nomes[i] "é" + str(desvio)
+}
     }
+
     public void buscaNome(){
         print("Digite o nome para busca");
         String busca = inputString();
