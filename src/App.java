@@ -37,9 +37,18 @@ public class App {
         }
         }
     }
+
+//Traz menos verbosidade
+
     public void print(String texto){
         System.out.println(texto);
     }
+
+//Converte para string
+    public String str(String string){
+      return String.parseString(string)
+}
+
     //Adiciona nomes ao array
     public void adicionaAluno(){
 
@@ -62,8 +71,14 @@ public class App {
 
     //Calcula a media com base no array de notas
     public void media(){
-
+       double total = 0; 
+       
+       for(int i; i<tamanhoArrays; i++){
+          total+= notas[i];
+}
+       print(str(total/tamanhoArrays);
     }
+
     public void mediana(){
 
     }
