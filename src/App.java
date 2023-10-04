@@ -76,7 +76,7 @@ public class App {
     public void buscaNome(){
         print("Digite o nome para busca");
         String busca = inputString();
-        for(int i; i = 0; i++){
+        for(int i = 0 ; i < tamanhoArrays; i++){
 
         }
     }
