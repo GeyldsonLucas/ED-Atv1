@@ -2,8 +2,8 @@ import java.util.Scanner;
 
 public class App {
     private static Scanner sc = new Scanner(System.in);
-    double [] idades = new double[500];
-    String[] nomes = new String[500];
+    double [] idades = new double[100];
+    String[] nomes = new String[100];
     int tamanhoArrays = 0;
 
     public static void main(String[] args) throws Exception {
@@ -69,7 +69,10 @@ public class App {
         //Aumenta o tamanho do array manualmente
         tamanhoArrays++;
     }
-
+    //Organiza o array em ordem crescente
+    public void sort(){
+        
+    }
 
     //Funções principais-------------------------------------------------------------------------------
 
@@ -110,6 +113,9 @@ public class App {
     }
 
     public void mediana(){
+        int[] idadesSort = new int[idades.length];
+
+
        
     }
     public void moda(){
