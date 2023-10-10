@@ -2,6 +2,7 @@ import java.util.Scanner;
 
 public class App {
     private static Scanner sc = new Scanner(System.in);
+
     double [] idades = new double[100];
     String[] nomes = new String[100];
     int tamanhoArrays = 0;
@@ -69,10 +70,6 @@ public class App {
         //Aumenta o tamanho do array manualmente
         tamanhoArrays++;
     }
-    //Organiza o array em ordem crescente
-    public void sort(){
-        
-    }
 
     //Funções principais-------------------------------------------------------------------------------
 
@@ -84,7 +81,7 @@ public class App {
         print("2 - Media");
         print("3 - Mediana");
         print("4 - Moda");
-        print("5 - Desvio padrão");
+        print("5 - Desvio padrao");
         print("6 - Buscar nome");
         print("7 - Sair");
         print("Digite uma opcão");
@@ -97,6 +94,7 @@ public class App {
         if(opt == 5) desvioPadrao();
         if(opt == 6 ) buscaNome();
         if(opt == 7) break; 
+        if(opt >7 || opt <1) print("Opçao invalida");
     }
 }
     //Calcula a media com base no array de notas
@@ -108,24 +106,82 @@ public class App {
         }
         double media = total/tamanhoArrays;
 
-       print(str(media));
+       print("Media: "+ str(media));
        return media;
     }
 
-    public void mediana(){
-        int[] idadesSort = new int[idades.length];
-
-
-       
+    public void mediana() {
+        if (tamanhoArrays == 0) {
+            print("Não há dados para calcular a mediana.");
+            return;
+        }
+    
+        // Ordena o array em ordem crescente (usando o algoritmo de ordenação de bolha)
+        for (int i = 0; i < tamanhoArrays - 1; i++) {
+            for (int j = 0; j < tamanhoArrays - i - 1; j++) {
+                if (idades[j] > idades[j + 1]) {
+                    double temp = idades[j];
+                    String tempNome = nomes[j];
+                    idades[j] = idades[j + 1];
+                    nomes[j] = nomes[j+1];
+                    idades[j + 1] = temp;
+                    nomes[j+1] = tempNome;
+                }
+            }
+        }
+    
+        if (tamanhoArrays % 2 == 0) {
+            // Se o tamanho do array for par, a mediana é a média dos dois valores do meio
+            int meio1 = tamanhoArrays / 2 - 1;
+            int meio2 = tamanhoArrays / 2;
+            double mediana = (idades[meio1] + idades[meio2]) / 2.0;
+            print("Mediana: " + str(mediana));
+        } else {
+            // Se o tamanho do array for ímpar, a mediana é o valor do meio
+            int meio = tamanhoArrays / 2;
+            double mediana = idades[meio];
+            print("Mediana: " + str(mediana));
+        }
     }
+    
+
     public void moda(){
+    if (tamanhoArrays == 0) {
+        print("Não há dados para calcular a moda.");
+        return;
+    }
+
+    double moda = idades[0];  // Valor inicial para a moda
+    int maxContagem = 1;      // Contagem do valor mais frequente
+    int contagemAtual = 1;    // Contagem do valor atual
+
+    for (int i = 1; i < tamanhoArrays; i++) {
+        if (idades[i] == idades[i - 1]) {
+            contagemAtual++;
+        } else {
+            contagemAtual = 1;
+        }
+
+        if (contagemAtual > maxContagem) {
+            maxContagem = contagemAtual;
+            moda = idades[i];
+        }
+    }
+
+    if (maxContagem > 1) {
+        print("Moda: " + str(moda) + " (apareceu " + maxContagem + " vezes)");
+    } else {
+        print("Não há moda (todos os valores são únicos)");
+    }
+
+
 
     }
     public void desvioPadrao(){
         double media = media();
         for(int i = 0 ; i<tamanhoArrays; i++){
          double desvio = media - idades[i];
-         print( "O desvio padrão de " + nomes[i] + "é" + str(desvio));
+         print( "O desvio padrão de " + nomes[i] + " é " + str(desvio));
 }
     }
 
@@ -135,7 +191,7 @@ public class App {
         for(int i = 0 ; i < tamanhoArrays; i++){
           if(nomes[i].equals(busca)) {
           // Mostra o nome e idade do aluno
-            print( "Aluno: " + busca + "idade: " + str(idades[i]));
+            print( "Aluno: " + busca + " idade: " + str(idades[i]));
 
 }
 
